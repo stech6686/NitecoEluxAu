@@ -1,0 +1,526 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8D48C242-BA05-49E6-80CF-1B83DBD628EB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Elux.ApiIntergration</RootNamespace>
+    <AssemblyName>Elux.ApiIntergration</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EluxApiIntHelper.cs" />
+    <Compile Include="Connected Services\BrontoPayment\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\EluxPim\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\EluxStockAvailability\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Connected Services\BrontoPayment\BrontoSoapApiImplService.wsdl" />
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.accountObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.activityObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.addAccountsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.addApiTokensResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.addContactEventResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.addContactsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.addContactsToWorkflowResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.addContentTagsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.addConversionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.addDeliveriesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.addDeliveryGroupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.addFieldsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.addHeaderFootersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.addListsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.addLoginsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.addMessageFoldersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.addMessageRulesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.addMessagesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.addOrUpdateContactsIncrementalResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.addOrUpdateContactsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.addOrUpdateDeliveryGroupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.addOrUpdateOrdersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.addSMSDeliveriesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.addSMSKeywordsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.addSMSMessagesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.addToDeliveryGroupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.addToListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.addToSMSKeywordResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.addUpdateOrderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.addWorkflowsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.apiTokenObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.bounceObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.clearListsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.contactObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.contentTagObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.conversionObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.deleteAccountsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.deleteApiTokensResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.deleteContactsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.deleteContentTagsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.deleteDeliveriesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.deleteDeliveryGroupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.deleteFieldsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.deleteFromDeliveryGroupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.deleteHeaderFootersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.deleteListsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.deleteLoginsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.deleteMessageFoldersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.deleteMessageRulesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.deleteMessagesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.deleteOrdersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.deleteSMSDeliveriesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.deleteSMSKeywordsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.deleteSMSMessagesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.deleteWorkflowsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.deliveryGroupObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.deliveryObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.deliveryRecipientStatObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.fieldObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.headerFooterObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.loginObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.loginResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.logoutResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.mailListObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.messageFolderObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.messageObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.messageRuleObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.readAccountsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.readActivitiesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.readApiTokensResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.readBouncesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.readContactsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.readContactsWithLatestUnsubscribeDateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.readContentTagsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.readConversionsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.readDeliveriesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.readDeliveryGroupsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.readDeliveryRecipientsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.readFieldsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.readHeaderFootersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.readListsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.readLoginsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.readMessageFoldersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.readMessageRulesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.readMessagesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.readRecentInboundActivitiesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.readRecentOutboundActivitiesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.readSegmentsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.readSegmentsWithTotalCountsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.readSMSDeliveriesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.readSMSKeywordsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.readSMSMessagesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.readUnsubscribesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.readWebformsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.readWorkflowsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.recentActivityObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.removeFromListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.removeFromSMSKeywordResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.segmentObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.smsDeliveryObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.smsKeywordObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.smsMessageObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.unsubscribeObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.updateAccountsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.updateApiTokensResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.updateContactsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.updateContentTagsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.updateDeliveriesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.updateDeliveryGroupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.updateFieldsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.updateHeaderFootersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.updateListsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.updateLoginsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.updateMessageFoldersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.updateMessageRulesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.updateMessagesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.updateSMSDeliveriesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.updateSMSKeywordsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.updateSMSMessagesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.updateWorkflowsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.webformObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.workflowObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrontoPayment\Elux.ApiIntergration.BrontoPayment.writeResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EluxPim\Elux.ApiIntergration.EluxPim.AttachmentEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EluxPim\Elux.ApiIntergration.EluxPim.BrochureEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EluxPim\Elux.ApiIntergration.EluxPim.CategoryEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EluxPim\Elux.ApiIntergration.EluxPim.CategoryExtEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EluxPim\Elux.ApiIntergration.EluxPim.NewsletterEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EluxPim\Elux.ApiIntergration.EluxPim.ProductBasicEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EluxPim\Elux.ApiIntergration.EluxPim.ProductEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EluxPim\Elux.ApiIntergration.EluxPim.PromotionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EluxPim\Elux.ApiIntergration.EluxPim.RelationshipGroupEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EluxPim\Elux.ApiIntergration.EluxPim.SearchProductResultEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EluxPim\Elux.ApiIntergration.EluxPim.StockAvailabilityEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EluxPim\Elux.ApiIntergration.EluxPim.TechDataGroupEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EluxPim\PimService.wsdl" />
+    <None Include="Connected Services\EluxStockAvailability\Elux.ApiIntergration.EluxStockAvailability.getStockAvailableResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EluxStockAvailability\StockAvailableService.wsdl" />
+    <None Include="Connected Services\EluxStockAvailability\StockAvailableService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\BrontoPayment\" />
+    <WCFMetadataStorage Include="Connected Services\EluxPim\" />
+    <WCFMetadataStorage Include="Connected Services\EluxStockAvailability\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\BrontoPayment\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\BrontoPayment\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\BrontoPayment\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\EluxStockAvailability\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\EluxStockAvailability\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\EluxStockAvailability\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\EluxPim\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\EluxPim\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\EluxPim\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

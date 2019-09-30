@@ -1,0 +1,1592 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://Electrolux.Pims/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="PimService" targetNamespace="http://Electrolux.Pims/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://Electrolux.Pims/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" />
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities.V2" />
+      <xs:element name="GetServiceCategory">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="service" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetServiceCategoryResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" minOccurs="0" name="GetServiceCategoryResult" nillable="true" type="q1:CategoryEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SearchProductBasic">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="service" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="modelNumber" nillable="true" type="xs:string" />
+            <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="productStatus" nillable="true" type="q2:ArrayOfstring" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SearchProductBasicResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" minOccurs="0" name="SearchProductBasicResult" nillable="true" type="q3:ArrayOfProductBasicEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SearchProductsBasic">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="service" nillable="true" type="xs:string" />
+            <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="modelNumbers" nillable="true" type="q4:ArrayOfstring" />
+            <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="productStatus" nillable="true" type="q5:ArrayOfstring" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SearchProductsBasicResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" minOccurs="0" name="SearchProductsBasicResult" nillable="true" type="q6:ArrayOfProductBasicEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SearchProductBasicPagination">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="service" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="modelNumber" nillable="true" type="xs:string" />
+            <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="productStatus" nillable="true" type="q7:ArrayOfstring" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="pageIdx" type="xs:int" />
+            <xs:element minOccurs="0" name="pageCnt" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SearchProductBasicPaginationResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" minOccurs="0" name="SearchProductBasicPaginationResult" nillable="true" type="q8:SearchProductResultEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SearchProductKeyword">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="service" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="keyword" nillable="true" type="xs:string" />
+            <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="productStatus" nillable="true" type="q9:ArrayOfstring" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SearchProductKeywordResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" minOccurs="0" name="SearchProductKeywordResult" nillable="true" type="q10:ArrayOfProductBasicEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SearchProductKeywordPagination">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="service" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="keyword" nillable="true" type="xs:string" />
+            <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="productStatus" nillable="true" type="q11:ArrayOfstring" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="pageIdx" type="xs:int" />
+            <xs:element minOccurs="0" name="pageCnt" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SearchProductKeywordPaginationResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" minOccurs="0" name="SearchProductKeywordPaginationResult" nillable="true" type="q12:SearchProductResultEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SearchProductKeywordLimitByModelNumbers">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="service" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="keyword" nillable="true" type="xs:string" />
+            <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="productStatus" nillable="true" type="q13:ArrayOfstring" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="pageIdx" type="xs:int" />
+            <xs:element minOccurs="0" name="pageCnt" type="xs:int" />
+            <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="limitedModelNumbers" nillable="true" type="q14:ArrayOfstring" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SearchProductKeywordLimitByModelNumbersResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" minOccurs="0" name="SearchProductKeywordLimitByModelNumbersResult" nillable="true" type="q15:SearchProductResultEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SearchAdvancedPagination">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="service" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="categoryGuid" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="heightFrom" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="heightTo" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="widthFrom" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="widthTo" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="depthFrom" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="depthTo" nillable="true" type="xs:string" />
+            <xs:element xmlns:q16="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="productStatus" nillable="true" type="q16:ArrayOfstring" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="pageIdx" type="xs:int" />
+            <xs:element minOccurs="0" name="pageCnt" type="xs:int" />
+            <xs:element xmlns:q17="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="consignementmodels" nillable="true" type="q17:ArrayOfstring" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SearchAdvancedPaginationResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" minOccurs="0" name="SearchAdvancedPaginationResult" nillable="true" type="q18:SearchProductResultEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SearchAdvancedLimitByModelNumbersPagination">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="service" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="categoryGuid" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="heightFrom" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="heightTo" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="widthFrom" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="widthTo" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="depthFrom" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="depthTo" nillable="true" type="xs:string" />
+            <xs:element xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="productStatus" nillable="true" type="q19:ArrayOfstring" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="pageIdx" type="xs:int" />
+            <xs:element minOccurs="0" name="pageCnt" type="xs:int" />
+            <xs:element xmlns:q20="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="consignementmodels" nillable="true" type="q20:ArrayOfstring" />
+            <xs:element xmlns:q21="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="limitedModelNumbers" nillable="true" type="q21:ArrayOfstring" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SearchAdvancedLimitByModelNumbersPaginationResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" minOccurs="0" name="SearchAdvancedLimitByModelNumbersPaginationResult" nillable="true" type="q22:SearchProductResultEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetRecentServiceProducts">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="service" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetRecentServiceProductsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" minOccurs="0" name="GetRecentServiceProductsResult" nillable="true" type="q23:ArrayOfProductBasicEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetRecentServiceProductsByCategory">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="service" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="categoryGuid" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetRecentServiceProductsByCategoryResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" minOccurs="0" name="GetRecentServiceProductsByCategoryResult" nillable="true" type="q24:ArrayOfProductBasicEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetServiceProducts">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="service" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="categoryGuid" nillable="true" type="xs:string" />
+            <xs:element xmlns:q25="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="productStatus" nillable="true" type="q25:ArrayOfstring" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetServiceProductsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" minOccurs="0" name="GetServiceProductsResult" nillable="true" type="q26:ArrayOfProductBasicEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetServiceRelationship">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="service" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="relationshipType" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="modelNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetServiceRelationshipResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" minOccurs="0" name="GetServiceRelationshipResult" nillable="true" type="q27:ArrayOfRelationshipGroupEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetServiceProductHeroImage">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="service" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="modelNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetServiceProductHeroImageResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" minOccurs="0" name="GetServiceProductHeroImageResult" nillable="true" type="q28:AttachmentEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProductShortDescription">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="modelNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProductShortDescriptionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GetProductShortDescriptionResult" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProductShortDescriptions">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q29="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="modelNumbers" nillable="true" type="q29:ArrayOfstring" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProductShortDescriptionsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q30="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetProductShortDescriptionsResult" nillable="true" type="q30:ArrayOfKeyValueOfstringstring" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProductAttachment">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="modelNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="publicationType" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProductAttachmentResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" minOccurs="0" name="GetProductAttachmentResult" nillable="true" type="q31:ArrayOfAttachmentEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProductInstallationGuides">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="modelNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProductInstallationGuidesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" minOccurs="0" name="GetProductInstallationGuidesResult" nillable="true" type="q32:ArrayOfAttachmentEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProductUserManuals">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="modelNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProductUserManualsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" minOccurs="0" name="GetProductUserManualsResult" nillable="true" type="q33:ArrayOfAttachmentEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProductBrochures">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="modelNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProductBrochuresResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" minOccurs="0" name="GetProductBrochuresResult" nillable="true" type="q34:ArrayOfAttachmentEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetBrochures">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="brand" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetBrochuresResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" minOccurs="0" name="GetBrochuresResult" nillable="true" type="q35:ArrayOfBrochureEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProductDimensionSheet">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="modelNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProductDimensionSheetResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" minOccurs="0" name="GetProductDimensionSheetResult" nillable="true" type="q36:ArrayOfAttachmentEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCategoryExtension">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="service" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCategoryExtensionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" minOccurs="0" name="GetCategoryExtensionResult" nillable="true" type="q37:CategoryExtEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetServiceCategoryByModelNumber">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="service" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="modelNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetServiceCategoryByModelNumberResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" minOccurs="0" name="GetServiceCategoryByModelNumberResult" nillable="true" type="q38:CategoryEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetServiceCategoryByCategoryGuid">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="service" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="categoryGuid" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetServiceCategoryByCategoryGuidResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" minOccurs="0" name="GetServiceCategoryByCategoryGuidResult" nillable="true" type="q39:CategoryEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCategoryExtensionByGuid">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="service" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="categoryGuid" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCategoryExtensionByGuidResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" minOccurs="0" name="GetCategoryExtensionByGuidResult" nillable="true" type="q40:CategoryExtEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAvailability">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="modelNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="state" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="ean" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAvailabilityResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GetAvailabilityResult" type="xs:double" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAvailabilityWithTTL">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="modelNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="state" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="ean" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="cacheTTL" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAvailabilityWithTTLResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GetAvailabilityWithTTLResult" type="xs:double" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAvailabilitiesWithTTL">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q41="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="modelNumbers" nillable="true" type="q41:ArrayOfstring" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="state" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="cacheTTL" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAvailabilitiesWithTTLResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q42="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetAvailabilitiesWithTTLResult" nillable="true" type="q42:ArrayOfKeyValueOfstringStockAvailabilityEntityPD7SAXwk" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetModelSuggestionWithBrand">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="service" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="modelNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="startIdx" type="xs:int" />
+            <xs:element minOccurs="0" name="count" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetModelSuggestionWithBrandResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q43="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetModelSuggestionWithBrandResult" nillable="true" type="q43:ArrayOfstring" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAEGModelSuggestionWithBrand">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="service" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="modelNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="startIdx" type="xs:int" />
+            <xs:element minOccurs="0" name="count" type="xs:int" />
+            <xs:element xmlns:q44="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="consignmentModels" nillable="true" type="q44:ArrayOfstring" />
+            <xs:element minOccurs="0" name="showObsolete" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAEGModelSuggestionWithBrandResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q45="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetAEGModelSuggestionWithBrandResult" nillable="true" type="q45:ArrayOfstring" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetServiceProductDetail">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="service" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="modelNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="isBrandMobile" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetServiceProductDetailResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" minOccurs="0" name="GetServiceProductDetailResult" nillable="true" type="q46:ProductEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetServiceProductDetails">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="service" nillable="true" type="xs:string" />
+            <xs:element xmlns:q47="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="modelNumbers" nillable="true" type="q47:ArrayOfstring" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="isBrandMobile" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetServiceProductDetailsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" minOccurs="0" name="GetServiceProductDetailsResult" nillable="true" type="q48:ArrayOfProductEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetTechDataGroupEntities">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="service" nillable="true" type="xs:string" />
+            <xs:element xmlns:q49="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="modelNumbers" nillable="true" type="q49:ArrayOfstring" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="isBrandMobile" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetTechDataGroupEntitiesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q50="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetTechDataGroupEntitiesResult" nillable="true" type="q50:ArrayOfKeyValueOfstringTechDataGroupEntityPD7SAXwk" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPromotions">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="service" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPromotionsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities.V2" minOccurs="0" name="GetPromotionsResult" nillable="true" type="q51:ArrayOfPromotionEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProductCurrentPromotions">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="service" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="modelNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProductCurrentPromotionsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities.V2" minOccurs="0" name="GetProductCurrentPromotionsResult" nillable="true" type="q52:ArrayOfPromotionEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetNewsletters">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="service" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="site" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetNewslettersResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities.V2" minOccurs="0" name="GetNewslettersResult" nillable="true" type="q53:ArrayOfNewsletterEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/Electrolux.Data.DomainObjects" />
+      <xs:complexType name="CategoryEntity">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:BaseCategoryEntity">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="SubCategory" nillable="true" type="tns:ArrayOfCategoryEntity" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="CategoryEntity" nillable="true" type="tns:CategoryEntity" />
+      <xs:complexType name="BaseCategoryEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="GUID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="BaseCategoryEntity" nillable="true" type="tns:BaseCategoryEntity" />
+      <xs:complexType name="ArrayOfCategoryEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="CategoryEntity" nillable="true" type="tns:CategoryEntity" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfCategoryEntity" nillable="true" type="tns:ArrayOfCategoryEntity" />
+      <xs:complexType name="ArrayOfProductBasicEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ProductBasicEntity" nillable="true" type="tns:ProductBasicEntity" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfProductBasicEntity" nillable="true" type="tns:ArrayOfProductBasicEntity" />
+      <xs:complexType name="ProductBasicEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Availability" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Brand" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CategoryGUID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Currency" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CurrentPromotion" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Ean" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Features" nillable="true" type="tns:ArrayOfBFAEntity" />
+          <xs:element minOccurs="0" name="GUID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsAccessory" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsRecalled" type="xs:boolean" />
+          <xs:element minOccurs="0" name="LimitedDistribution" type="xs:boolean" />
+          <xs:element minOccurs="0" name="LineName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LongDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ModelNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ModifyDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Notes" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ProductImagePath" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ProductStatus" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ProductTitle" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RRP" type="xs:double" />
+          <xs:element minOccurs="0" name="ReplacementModelNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReplacementName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Safr" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ShortDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StockName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VirtualCategoryGUID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ProductBasicEntity" nillable="true" type="tns:ProductBasicEntity" />
+      <xs:complexType name="ArrayOfBFAEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="BFAEntity" nillable="true" type="tns:BFAEntity" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfBFAEntity" nillable="true" type="tns:ArrayOfBFAEntity" />
+      <xs:complexType name="BFAEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Attachments" nillable="true" type="tns:ArrayOfAttachmentEntity" />
+          <xs:element minOccurs="0" name="GUID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ShortDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VideoUrl" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="BFAEntity" nillable="true" type="tns:BFAEntity" />
+      <xs:complexType name="ArrayOfAttachmentEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="AttachmentEntity" nillable="true" type="tns:AttachmentEntity" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfAttachmentEntity" nillable="true" type="tns:ArrayOfAttachmentEntity" />
+      <xs:complexType name="AttachmentEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AttachmentType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Path" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PublicationType" nillable="true" type="xs:string" />
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Electrolux.Data.DomainObjects" minOccurs="0" name="Thumbnails" nillable="true" type="q1:ArrayOfThumbnailItem" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AttachmentEntity" nillable="true" type="tns:AttachmentEntity" />
+      <xs:complexType name="SearchProductResultEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ProductBasics" nillable="true" type="tns:ArrayOfProductBasicEntity" />
+          <xs:element minOccurs="0" name="TotalCount" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SearchProductResultEntity" nillable="true" type="tns:SearchProductResultEntity" />
+      <xs:complexType name="ArrayOfRelationshipGroupEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="RelationshipGroupEntity" nillable="true" type="tns:RelationshipGroupEntity" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfRelationshipGroupEntity" nillable="true" type="tns:ArrayOfRelationshipGroupEntity" />
+      <xs:complexType name="RelationshipGroupEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Relationships" nillable="true" type="tns:ArrayOfRelationshipEntity" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="RelationshipGroupEntity" nillable="true" type="tns:RelationshipGroupEntity" />
+      <xs:complexType name="ArrayOfRelationshipEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="RelationshipEntity" nillable="true" type="tns:RelationshipEntity" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfRelationshipEntity" nillable="true" type="tns:ArrayOfRelationshipEntity" />
+      <xs:complexType name="RelationshipEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ModelNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="RelationshipEntity" nillable="true" type="tns:RelationshipEntity" />
+      <xs:complexType name="ArrayOfBrochureEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="BrochureEntity" nillable="true" type="tns:BrochureEntity" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfBrochureEntity" nillable="true" type="tns:ArrayOfBrochureEntity" />
+      <xs:complexType name="BrochureEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AttachmentId" type="xs:int" />
+          <xs:element minOccurs="0" name="AttachmentName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AttachmentType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BrandCd" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BrandNm" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Extension" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ID" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ThumbPath" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="BrochureEntity" nillable="true" type="tns:BrochureEntity" />
+      <xs:complexType name="CategoryExtEntity">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:BaseCategoryEntity">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Products" nillable="true" type="tns:ArrayOfProductBasicEntity" />
+              <xs:element minOccurs="0" name="SubCategory" nillable="true" type="tns:ArrayOfCategoryExtEntity" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="CategoryExtEntity" nillable="true" type="tns:CategoryExtEntity" />
+      <xs:complexType name="ArrayOfCategoryExtEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="CategoryExtEntity" nillable="true" type="tns:CategoryExtEntity" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfCategoryExtEntity" nillable="true" type="tns:ArrayOfCategoryExtEntity" />
+      <xs:complexType name="StockAvailabilityEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Availability" type="xs:double" />
+          <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StateCd" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StateName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="StockAvailabilityEntity" nillable="true" type="tns:StockAvailabilityEntity" />
+      <xs:complexType name="ProductEntity">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:ProductBasicEntity">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Accessories" nillable="true" type="tns:ArrayOfProductEntity" />
+              <xs:element minOccurs="0" name="Attachments" nillable="true" type="tns:ArrayOfAttachmentEntity" />
+              <xs:element minOccurs="0" name="Awards" nillable="true" type="tns:ArrayOfBFAEntity" />
+              <xs:element minOccurs="0" name="Benefits" nillable="true" type="tns:ArrayOfBFAEntity" />
+              <xs:element minOccurs="0" name="KitComponents" nillable="true" type="tns:ArrayOfRelationshipGroupEntity" />
+              <xs:element minOccurs="0" name="ProductSKUs" nillable="true" type="tns:ArrayOfProductEntity" />
+              <xs:element minOccurs="0" name="ProductsOfThisAccessory" nillable="true" type="tns:ArrayOfProductEntity" />
+              <xs:element minOccurs="0" name="Relationships" nillable="true" type="tns:ArrayOfRelationshipGroupEntity" />
+              <xs:element minOccurs="0" name="TechDataGroupEntity" nillable="true" type="tns:TechDataGroupEntity" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="ProductEntity" nillable="true" type="tns:ProductEntity" />
+      <xs:complexType name="ArrayOfProductEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ProductEntity" nillable="true" type="tns:ProductEntity" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfProductEntity" nillable="true" type="tns:ArrayOfProductEntity" />
+      <xs:complexType name="TechDataGroupEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GroupGUID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Order" type="xs:int" />
+          <xs:element minOccurs="0" name="SubGroups" nillable="true" type="tns:ArrayOfTechDataGroupEntity" />
+          <xs:element minOccurs="0" name="Values" nillable="true" type="tns:ArrayOfTechDataValueEntity" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="TechDataGroupEntity" nillable="true" type="tns:TechDataGroupEntity" />
+      <xs:complexType name="ArrayOfTechDataGroupEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="TechDataGroupEntity" nillable="true" type="tns:TechDataGroupEntity" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfTechDataGroupEntity" nillable="true" type="tns:ArrayOfTechDataGroupEntity" />
+      <xs:complexType name="ArrayOfTechDataValueEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="TechDataValueEntity" nillable="true" type="tns:TechDataValueEntity" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfTechDataValueEntity" nillable="true" type="tns:ArrayOfTechDataValueEntity" />
+      <xs:complexType name="TechDataValueEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IsFacet" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TechDataAttributeGUID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Unit" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="TechDataValueEntity" nillable="true" type="tns:TechDataValueEntity" />
+      <xs:complexType name="PromotionEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CountryCd" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="GUID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LinkText" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PromotionEndDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="PromotionStartDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="RedemptionEndDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="RedemptionLink" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RedemptionStartDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="PromotionEntity" nillable="true" type="tns:PromotionEntity" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Electrolux.Service" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Electrolux.Service" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xs:complexType name="MyApplicationFault">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="Exception" nillable="true" type="q1:Exception" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="MyApplicationFault" nillable="true" type="tns:MyApplicationFault" />
+    </xs:schema>
+    <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/System" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/System" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xs:complexType name="Exception">
+        <xs:sequence>
+          <xs:any minOccurs="0" maxOccurs="unbounded" namespace="##local" processContents="skip" />
+        </xs:sequence>
+        <xs:attribute ref="ser:FactoryType" />
+      </xs:complexType>
+      <xs:element name="Exception" nillable="true" type="tns:Exception" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" />
+      <xs:complexType name="ArrayOfstring">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfstring" nillable="true" type="tns:ArrayOfstring" />
+      <xs:complexType name="ArrayOfKeyValueOfstringstring">
+        <xs:annotation>
+          <xs:appinfo>
+            <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfstringstring">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Key" nillable="true" type="xs:string" />
+                <xs:element name="Value" nillable="true" type="xs:string" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfKeyValueOfstringstring" nillable="true" type="tns:ArrayOfKeyValueOfstringstring" />
+      <xs:complexType name="ArrayOfKeyValueOfstringStockAvailabilityEntityPD7SAXwk">
+        <xs:annotation>
+          <xs:appinfo>
+            <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfstringStockAvailabilityEntityPD7SAXwk">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Key" nillable="true" type="xs:string" />
+                <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" name="Value" nillable="true" type="q1:StockAvailabilityEntity" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfKeyValueOfstringStockAvailabilityEntityPD7SAXwk" nillable="true" type="tns:ArrayOfKeyValueOfstringStockAvailabilityEntityPD7SAXwk" />
+      <xs:complexType name="ArrayOfKeyValueOfstringTechDataGroupEntityPD7SAXwk">
+        <xs:annotation>
+          <xs:appinfo>
+            <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfstringTechDataGroupEntityPD7SAXwk">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Key" nillable="true" type="xs:string" />
+                <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" name="Value" nillable="true" type="q2:TechDataGroupEntity" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfKeyValueOfstringTechDataGroupEntityPD7SAXwk" nillable="true" type="tns:ArrayOfKeyValueOfstringTechDataGroupEntityPD7SAXwk" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Electrolux.Data.DomainObjects" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Electrolux.Data.DomainObjects" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ArrayOfThumbnailItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ThumbnailItem" nillable="true" type="tns:ThumbnailItem" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfThumbnailItem" nillable="true" type="tns:ArrayOfThumbnailItem" />
+      <xs:complexType name="ThumbnailItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Path" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ThumbnailItem" nillable="true" type="tns:ThumbnailItem" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities.V2" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities.V2" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" />
+      <xs:complexType name="ArrayOfPromotionEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="PromotionEntity" nillable="true" type="tns:PromotionEntity" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfPromotionEntity" nillable="true" type="tns:ArrayOfPromotionEntity" />
+      <xs:complexType name="PromotionEntity">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Electrolux.Data.Entities" base="q1:PromotionEntity">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="ImageLink" nillable="true" type="xs:string" />
+              <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ModelNumbers" nillable="true" type="q2:ArrayOfstring" />
+              <xs:element minOccurs="0" name="PromotionAttachmentEntities" nillable="true" type="tns:ArrayOfPromotionAttachmentEntity" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="PromotionEntity" nillable="true" type="tns:PromotionEntity" />
+      <xs:complexType name="ArrayOfPromotionAttachmentEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="PromotionAttachmentEntity" nillable="true" type="tns:PromotionAttachmentEntity" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfPromotionAttachmentEntity" nillable="true" type="tns:ArrayOfPromotionAttachmentEntity" />
+      <xs:complexType name="PromotionAttachmentEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DownloadLink" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DownloadTitle" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="PromotionAttachmentEntity" nillable="true" type="tns:PromotionAttachmentEntity" />
+      <xs:complexType name="ArrayOfNewsletterEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="NewsletterEntity" nillable="true" type="tns:NewsletterEntity" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfNewsletterEntity" nillable="true" type="tns:ArrayOfNewsletterEntity" />
+      <xs:complexType name="NewsletterEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ActiveDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Path" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Site" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="NewsletterEntity" nillable="true" type="tns:NewsletterEntity" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="IPimService_GetServiceCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceCategory" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetServiceCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetServiceCategory_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q1:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_SearchProductBasic_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchProductBasic" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_SearchProductBasic_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchProductBasicResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_SearchProductBasic_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q2:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_SearchProductsBasic_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchProductsBasic" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_SearchProductsBasic_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchProductsBasicResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_SearchProductsBasic_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q3:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_SearchProductBasicPagination_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchProductBasicPagination" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_SearchProductBasicPagination_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchProductBasicPaginationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_SearchProductBasicPagination_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q4:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_SearchProductKeyword_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchProductKeyword" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_SearchProductKeyword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchProductKeywordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_SearchProductKeyword_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q5:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_SearchProductKeywordPagination_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchProductKeywordPagination" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_SearchProductKeywordPagination_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchProductKeywordPaginationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_SearchProductKeywordPagination_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q6:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_SearchProductKeywordLimitByModelNumbers_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchProductKeywordLimitByModelNumbers" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_SearchProductKeywordLimitByModelNumbers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchProductKeywordLimitByModelNumbersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_SearchAdvancedPagination_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchAdvancedPagination" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_SearchAdvancedPagination_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchAdvancedPaginationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_SearchAdvancedPagination_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q7:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_SearchAdvancedLimitByModelNumbersPagination_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchAdvancedLimitByModelNumbersPagination" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_SearchAdvancedLimitByModelNumbersPagination_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchAdvancedLimitByModelNumbersPaginationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetRecentServiceProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRecentServiceProducts" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetRecentServiceProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRecentServiceProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetRecentServiceProducts_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q8:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetRecentServiceProductsByCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRecentServiceProductsByCategory" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetRecentServiceProductsByCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRecentServiceProductsByCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetRecentServiceProductsByCategory_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q9:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetServiceProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceProducts" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetServiceProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetServiceProducts_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q10:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetServiceRelationship_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceRelationship" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetServiceRelationship_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceRelationshipResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetServiceRelationship_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q11:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetServiceProductHeroImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceProductHeroImage" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetServiceProductHeroImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceProductHeroImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetServiceProductHeroImage_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q12:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetProductShortDescription_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductShortDescription" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetProductShortDescription_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductShortDescriptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetProductShortDescription_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q13:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetProductShortDescriptions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductShortDescriptions" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetProductShortDescriptions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductShortDescriptionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetProductShortDescriptions_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q14:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetProductAttachment_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductAttachment" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetProductAttachment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductAttachmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetProductAttachment_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q15:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetProductInstallationGuides_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductInstallationGuides" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetProductInstallationGuides_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductInstallationGuidesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetProductInstallationGuides_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q16:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetProductUserManuals_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductUserManuals" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetProductUserManuals_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductUserManualsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetProductUserManuals_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q17="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q17:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetProductBrochures_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductBrochures" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetProductBrochures_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductBrochuresResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetProductBrochures_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q18="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q18:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetBrochures_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBrochures" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetBrochures_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBrochuresResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetBrochures_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q19="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q19:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetProductDimensionSheet_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductDimensionSheet" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetProductDimensionSheet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductDimensionSheetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetProductDimensionSheet_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q20="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q20:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetCategoryExtension_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoryExtension" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetCategoryExtension_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoryExtensionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetCategoryExtension_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q21="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q21:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetServiceCategoryByModelNumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceCategoryByModelNumber" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetServiceCategoryByModelNumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceCategoryByModelNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetServiceCategoryByModelNumber_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q22="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q22:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetServiceCategoryByCategoryGuid_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceCategoryByCategoryGuid" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetServiceCategoryByCategoryGuid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceCategoryByCategoryGuidResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetServiceCategoryByCategoryGuid_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q23="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q23:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetCategoryExtensionByGuid_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoryExtensionByGuid" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetCategoryExtensionByGuid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoryExtensionByGuidResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetCategoryExtensionByGuid_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q24="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q24:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetAvailability_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailability" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetAvailability_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailabilityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetAvailability_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q25="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q25:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetAvailabilityWithTTL_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailabilityWithTTL" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetAvailabilityWithTTL_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailabilityWithTTLResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetAvailabilityWithTTL_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q26="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q26:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetAvailabilitiesWithTTL_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailabilitiesWithTTL" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetAvailabilitiesWithTTL_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailabilitiesWithTTLResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetAvailabilitiesWithTTL_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q27="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q27:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetModelSuggestionWithBrand_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetModelSuggestionWithBrand" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetModelSuggestionWithBrand_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetModelSuggestionWithBrandResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetModelSuggestionWithBrand_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q28="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q28:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetAEGModelSuggestionWithBrand_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAEGModelSuggestionWithBrand" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetAEGModelSuggestionWithBrand_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAEGModelSuggestionWithBrandResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetAEGModelSuggestionWithBrand_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q29="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q29:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetServiceProductDetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceProductDetail" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetServiceProductDetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceProductDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetServiceProductDetail_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q30="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q30:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetServiceProductDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceProductDetails" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetServiceProductDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceProductDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetServiceProductDetails_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q31="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q31:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetTechDataGroupEntities_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTechDataGroupEntities" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetTechDataGroupEntities_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTechDataGroupEntitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetTechDataGroupEntities_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q32="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q32:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetPromotions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPromotions" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetPromotions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPromotionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetPromotions_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q33="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q33:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetProductCurrentPromotions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductCurrentPromotions" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetProductCurrentPromotions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductCurrentPromotionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetProductCurrentPromotions_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q34="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q34:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetNewsletters_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNewsletters" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetNewsletters_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNewslettersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPimService_GetNewsletters_MyApplicationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q35="http://schemas.datacontract.org/2004/07/Electrolux.Service" name="detail" element="q35:MyApplicationFault" />
+  </wsdl:message>
+  <wsdl:portType name="IPimService">
+    <wsdl:operation name="GetServiceCategory">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/GetServiceCategory" message="tns:IPimService_GetServiceCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/GetServiceCategoryResponse" message="tns:IPimService_GetServiceCategory_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/GetServiceCategoryMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_GetServiceCategory_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchProductBasic">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/SearchProductBasic" message="tns:IPimService_SearchProductBasic_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/SearchProductBasicResponse" message="tns:IPimService_SearchProductBasic_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/SearchProductBasicMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_SearchProductBasic_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchProductsBasic">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/SearchProductsBasic" message="tns:IPimService_SearchProductsBasic_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/SearchProductsBasicResponse" message="tns:IPimService_SearchProductsBasic_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/SearchProductsBasicMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_SearchProductsBasic_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchProductBasicPagination">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/SearchProductBasicPagination" message="tns:IPimService_SearchProductBasicPagination_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/SearchProductBasicPaginationResponse" message="tns:IPimService_SearchProductBasicPagination_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/SearchProductBasicPaginationMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_SearchProductBasicPagination_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchProductKeyword">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/SearchProductKeyword" message="tns:IPimService_SearchProductKeyword_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/SearchProductKeywordResponse" message="tns:IPimService_SearchProductKeyword_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/SearchProductKeywordMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_SearchProductKeyword_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchProductKeywordPagination">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/SearchProductKeywordPagination" message="tns:IPimService_SearchProductKeywordPagination_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/SearchProductKeywordPaginationResponse" message="tns:IPimService_SearchProductKeywordPagination_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/SearchProductKeywordPaginationMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_SearchProductKeywordPagination_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchProductKeywordLimitByModelNumbers">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/SearchProductKeywordLimitByModelNumbers" message="tns:IPimService_SearchProductKeywordLimitByModelNumbers_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/SearchProductKeywordLimitByModelNumbersResponse" message="tns:IPimService_SearchProductKeywordLimitByModelNumbers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchAdvancedPagination">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/SearchAdvancedPagination" message="tns:IPimService_SearchAdvancedPagination_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/SearchAdvancedPaginationResponse" message="tns:IPimService_SearchAdvancedPagination_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/SearchAdvancedPaginationMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_SearchAdvancedPagination_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchAdvancedLimitByModelNumbersPagination">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/SearchAdvancedLimitByModelNumbersPagination" message="tns:IPimService_SearchAdvancedLimitByModelNumbersPagination_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/SearchAdvancedLimitByModelNumbersPaginationResponse" message="tns:IPimService_SearchAdvancedLimitByModelNumbersPagination_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRecentServiceProducts">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/GetRecentServiceProducts" message="tns:IPimService_GetRecentServiceProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/GetRecentServiceProductsResponse" message="tns:IPimService_GetRecentServiceProducts_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/GetRecentServiceProductsMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_GetRecentServiceProducts_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRecentServiceProductsByCategory">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/GetRecentServiceProductsByCategory" message="tns:IPimService_GetRecentServiceProductsByCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/GetRecentServiceProductsByCategoryResponse" message="tns:IPimService_GetRecentServiceProductsByCategory_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/GetRecentServiceProductsByCategoryMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_GetRecentServiceProductsByCategory_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceProducts">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/GetServiceProducts" message="tns:IPimService_GetServiceProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/GetServiceProductsResponse" message="tns:IPimService_GetServiceProducts_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/GetServiceProductsMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_GetServiceProducts_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceRelationship">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/GetServiceRelationship" message="tns:IPimService_GetServiceRelationship_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/GetServiceRelationshipResponse" message="tns:IPimService_GetServiceRelationship_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/GetServiceRelationshipMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_GetServiceRelationship_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceProductHeroImage">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/GetServiceProductHeroImage" message="tns:IPimService_GetServiceProductHeroImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/GetServiceProductHeroImageResponse" message="tns:IPimService_GetServiceProductHeroImage_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/GetServiceProductHeroImageMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_GetServiceProductHeroImage_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductShortDescription">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/GetProductShortDescription" message="tns:IPimService_GetProductShortDescription_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/GetProductShortDescriptionResponse" message="tns:IPimService_GetProductShortDescription_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/GetProductShortDescriptionMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_GetProductShortDescription_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductShortDescriptions">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/GetProductShortDescriptions" message="tns:IPimService_GetProductShortDescriptions_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/GetProductShortDescriptionsResponse" message="tns:IPimService_GetProductShortDescriptions_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/GetProductShortDescriptionsMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_GetProductShortDescriptions_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductAttachment">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/GetProductAttachment" message="tns:IPimService_GetProductAttachment_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/GetProductAttachmentResponse" message="tns:IPimService_GetProductAttachment_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/GetProductAttachmentMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_GetProductAttachment_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductInstallationGuides">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/GetProductInstallationGuides" message="tns:IPimService_GetProductInstallationGuides_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/GetProductInstallationGuidesResponse" message="tns:IPimService_GetProductInstallationGuides_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/GetProductInstallationGuidesMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_GetProductInstallationGuides_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductUserManuals">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/GetProductUserManuals" message="tns:IPimService_GetProductUserManuals_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/GetProductUserManualsResponse" message="tns:IPimService_GetProductUserManuals_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/GetProductUserManualsMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_GetProductUserManuals_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductBrochures">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/GetProductBrochures" message="tns:IPimService_GetProductBrochures_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/GetProductBrochuresResponse" message="tns:IPimService_GetProductBrochures_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/GetProductBrochuresMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_GetProductBrochures_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBrochures">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/GetBrochures" message="tns:IPimService_GetBrochures_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/GetBrochuresResponse" message="tns:IPimService_GetBrochures_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/GetBrochuresMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_GetBrochures_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductDimensionSheet">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/GetProductDimensionSheet" message="tns:IPimService_GetProductDimensionSheet_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/GetProductDimensionSheetResponse" message="tns:IPimService_GetProductDimensionSheet_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/GetProductDimensionSheetMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_GetProductDimensionSheet_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCategoryExtension">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/GetCategoryExtension" message="tns:IPimService_GetCategoryExtension_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/GetCategoryExtensionResponse" message="tns:IPimService_GetCategoryExtension_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/GetCategoryExtensionMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_GetCategoryExtension_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceCategoryByModelNumber">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/GetServiceCategoryByModelNumber" message="tns:IPimService_GetServiceCategoryByModelNumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/GetServiceCategoryByModelNumberResponse" message="tns:IPimService_GetServiceCategoryByModelNumber_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/GetServiceCategoryByModelNumberMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_GetServiceCategoryByModelNumber_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceCategoryByCategoryGuid">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/GetServiceCategoryByCategoryGuid" message="tns:IPimService_GetServiceCategoryByCategoryGuid_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/GetServiceCategoryByCategoryGuidResponse" message="tns:IPimService_GetServiceCategoryByCategoryGuid_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/GetServiceCategoryByCategoryGuidMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_GetServiceCategoryByCategoryGuid_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCategoryExtensionByGuid">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/GetCategoryExtensionByGuid" message="tns:IPimService_GetCategoryExtensionByGuid_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/GetCategoryExtensionByGuidResponse" message="tns:IPimService_GetCategoryExtensionByGuid_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/GetCategoryExtensionByGuidMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_GetCategoryExtensionByGuid_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailability">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/GetAvailability" message="tns:IPimService_GetAvailability_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/GetAvailabilityResponse" message="tns:IPimService_GetAvailability_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/GetAvailabilityMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_GetAvailability_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailabilityWithTTL">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/GetAvailabilityWithTTL" message="tns:IPimService_GetAvailabilityWithTTL_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/GetAvailabilityWithTTLResponse" message="tns:IPimService_GetAvailabilityWithTTL_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/GetAvailabilityWithTTLMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_GetAvailabilityWithTTL_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailabilitiesWithTTL">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/GetAvailabilitiesWithTTL" message="tns:IPimService_GetAvailabilitiesWithTTL_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/GetAvailabilitiesWithTTLResponse" message="tns:IPimService_GetAvailabilitiesWithTTL_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/GetAvailabilitiesWithTTLMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_GetAvailabilitiesWithTTL_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetModelSuggestionWithBrand">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/GetModelSuggestionWithBrand" message="tns:IPimService_GetModelSuggestionWithBrand_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/GetModelSuggestionWithBrandResponse" message="tns:IPimService_GetModelSuggestionWithBrand_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/GetModelSuggestionWithBrandMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_GetModelSuggestionWithBrand_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAEGModelSuggestionWithBrand">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/GetAEGModelSuggestionWithBrand" message="tns:IPimService_GetAEGModelSuggestionWithBrand_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/GetAEGModelSuggestionWithBrandResponse" message="tns:IPimService_GetAEGModelSuggestionWithBrand_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/GetAEGModelSuggestionWithBrandMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_GetAEGModelSuggestionWithBrand_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceProductDetail">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/GetServiceProductDetail" message="tns:IPimService_GetServiceProductDetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/GetServiceProductDetailResponse" message="tns:IPimService_GetServiceProductDetail_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/GetServiceProductDetailMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_GetServiceProductDetail_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceProductDetails">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/GetServiceProductDetails" message="tns:IPimService_GetServiceProductDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/GetServiceProductDetailsResponse" message="tns:IPimService_GetServiceProductDetails_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/GetServiceProductDetailsMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_GetServiceProductDetails_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTechDataGroupEntities">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/GetTechDataGroupEntities" message="tns:IPimService_GetTechDataGroupEntities_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/GetTechDataGroupEntitiesResponse" message="tns:IPimService_GetTechDataGroupEntities_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/GetTechDataGroupEntitiesMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_GetTechDataGroupEntities_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPromotions">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/GetPromotions" message="tns:IPimService_GetPromotions_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/GetPromotionsResponse" message="tns:IPimService_GetPromotions_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/GetPromotionsMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_GetPromotions_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductCurrentPromotions">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/GetProductCurrentPromotions" message="tns:IPimService_GetProductCurrentPromotions_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/GetProductCurrentPromotionsResponse" message="tns:IPimService_GetProductCurrentPromotions_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/GetProductCurrentPromotionsMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_GetProductCurrentPromotions_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNewsletters">
+      <wsdl:input wsaw:Action="http://Electrolux.Pims/IPimService/GetNewsletters" message="tns:IPimService_GetNewsletters_InputMessage" />
+      <wsdl:output wsaw:Action="http://Electrolux.Pims/IPimService/GetNewslettersResponse" message="tns:IPimService_GetNewsletters_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Electrolux.Pims/IPimService/GetNewslettersMyApplicationFaultFault" name="MyApplicationFaultFault" message="tns:IPimService_GetNewsletters_MyApplicationFaultFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="PimService" />
+</wsdl:definitions>

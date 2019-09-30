@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://stockavailable.ndevr.com/" targetNamespace="http://stockavailable.ndevr.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="getStockAvailable" type="tns:getStockAvailable" />
+  <xs:element name="getStockAvailableResponse" type="tns:getStockAvailableResponse" />
+  <xs:complexType name="getStockAvailable">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="emailAddress" type="xs:string" />
+      <xs:element minOccurs="0" name="modelNumber" type="xs:string" />
+      <xs:element minOccurs="0" name="ean" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getStockAvailableResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="quantityAvailable" type="xs:double" />
+      <xs:element minOccurs="0" name="errorMessage" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
